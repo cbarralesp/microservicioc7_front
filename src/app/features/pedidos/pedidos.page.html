@@ -1,0 +1,26 @@
+<h1>Pedidos</h1>
+
+<section class="tarjeta">
+  @if (cargando()) {
+    <p class="suave">Cargando pedidos…</p>
+  } @else {
+    <table class="tabla">
+      <thead>
+        <tr><th>#</th><th>Producto</th><th>Cantidad</th><th>Total</th><th>Fecha</th></tr>
+      </thead>
+      <tbody>
+        @for (p of pedidos(); track p.id) {
+          <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.nombreProducto }}</td>
+            <td>{{ p.cantidad }}</td>
+            <td>{{ p.total | currency: 'CLP' : 'symbol-narrow' : '1.0-0' }}</td>
+            <td>{{ p.creadoEn | date: 'dd/MM/yyyy HH:mm' }}</td>
+          </tr>
+        } @empty {
+          <tr><td colspan="5" class="suave">Aún no hay pedidos, o pedido-service no responde.</td></tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>

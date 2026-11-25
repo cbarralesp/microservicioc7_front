@@ -1,0 +1,45 @@
+<h1>Productos</h1>
+
+<section class="tarjeta">
+  <h2>Nuevo producto</h2>
+  <form class="formulario" (ngSubmit)="crear()">
+    <input class="campo" name="nombre" placeholder="Nombre" [(ngModel)]="nombre" maxlength="100" />
+    <input class="campo" name="precio" type="number" min="1" placeholder="Precio" [(ngModel)]="precio" />
+    <input class="campo" name="stock" type="number" min="0" placeholder="Stock" [(ngModel)]="stock" />
+    <button class="btn btn-primario" type="submit">Agregar</button>
+  </form>
+</section>
+
+<section class="tarjeta">
+  @if (cargando()) {
+    <p class="suave">Cargando productos…</p>
+  } @else {
+    <table class="tabla">
+      <thead>
+        <tr><th>Producto</th><th>Precio</th><th>Stock</th><th>Comprar</th></tr>
+      </thead>
+      <tbody>
+        @for (p of productos(); track p.id) {
+          <tr>
+            <td>{{ p.nombre }}</td>
+            <td>{{ p.precio | currency: 'CLP' : 'symbol-narrow' : '1.0-0' }}</td>
+            <td>
+              @if (p.stock > 0) {
+                <span class="chip chip-ok">{{ p.stock }}</span>
+              } @else {
+                <span class="chip chip-alerta">Agotado</span>
+              }
+            </td>
+            <td class="compra">
+              <input class="campo cantidad" type="number" min="1" [name]="'cant' + p.id"
+                     [(ngModel)]="cantidades[p.id]" placeholder="1" />
+              <button class="btn btn-chico btn-primario" type="button" (click)="comprar(p)">Comprar</button>
+            </td>
+          </tr>
+        } @empty {
+          <tr><td colspan="4" class="suave">No hay productos. ¿Está encendido producto-service?</td></tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>

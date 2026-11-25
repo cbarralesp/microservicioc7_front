@@ -1,0 +1,10 @@
+{
+  "/api/productos": {
+    "target": "http://localhost:8086",
+    "secure": false
+  },
+  "/api/pedidos": {
+    "target": "http://localhost:8087",
+    "secure": false
+  }
+}

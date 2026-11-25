@@ -1,0 +1,6 @@
+h1 { margin: 0 0 1rem; font-size: 1.5rem; }
+.tarjeta { background: var(--superficie); border: 1px solid var(--borde); border-radius: .8rem; padding: 1rem; }
+.tabla { width: 100%; border-collapse: collapse; }
+.tabla th, .tabla td { text-align: left; padding: .55rem .5rem; border-bottom: 1px solid var(--borde); }
+.tabla th { font-size: .8rem; color: var(--texto-suave); text-transform: uppercase; }
+.suave { color: var(--texto-suave); }

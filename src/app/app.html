@@ -1,0 +1,16 @@
+<header class="barra">
+  <div class="barra-interior">
+    <a class="marca" routerLink="/productos"><span class="marca-logo">🛒</span> Tienda IPSS</a>
+
+    <nav class="menu" aria-label="Secciones">
+      <a routerLink="/productos" routerLinkActive="activo">Productos</a>
+      <a routerLink="/pedidos" routerLinkActive="activo">Pedidos</a>
+    </nav>
+  </div>
+</header>
+
+<main class="contenido">
+  <router-outlet />
+</main>
+
+<app-toast />
